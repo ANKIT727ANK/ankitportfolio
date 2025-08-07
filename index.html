@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - ANKIT727ANK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Remove the next line if you don't have a custom CSS file -->
+    <!-- <link rel="stylesheet" href="assets/css/styles.css"> -->
+    <style>
+        :root {
+            --primary: #fff;
+            --secondary: #000;
+            --accent: #fff;
+            --glass: rgba(0, 0, 0, 0.85);
+            --border: #fff;
+            --highlight: #ff0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 20%, #fff 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, #fff 0%, transparent 60%);
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        header {
+            background: transparent;
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 2.7rem;
+            letter-spacing: 2px;
+            color: var(--highlight);
+            text-shadow: 0 0 18px #fff, 0 0 2px #000;
+            margin-bottom: 0.5rem;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 18px #fff, 0 0 2px #000;
+            }
+
+            to {
+                text-shadow: 0 0 32px #fff, 0 0 8px #fff;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.2rem 0.5rem;
+            transition: color 0.2s;
+        }
+
+        nav a::after {
+            content: "";
+            display: block;
+            height: 3px;
+            width: 0;
+            background: linear-gradient(90deg, #fff, #ff0);
+            border-radius: 2px;
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: var(--highlight);
+        }
+
+        nav a:hover::after,
+        nav a:focus::after {
+            width: 100%;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 2.5rem auto 0 auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+            background: var(--glass);
+            border-radius: 18px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 8px 32px 0 #fff2;
+            border: 2px solid var(--border);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(.4, 0, .2, 1), transform 0.8s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--highlight);
+            font-family: 'Orbitron', Arial, sans-serif;
+            letter-spacing: 1px;
+            font-size: 2rem;
+            text-shadow: 0 0 8px #fff;
+        }
+
+        .embed,
+        .social-embeds>div {
+            margin-bottom: 1.2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 18px 0 #fff2;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid #fff2;
+        }
+
+        img {
+            margin: 0.7rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px #fff2;
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+            filter: grayscale(1) contrast(1.2);
+        }
+
+        img:hover {
+            transform: scale(1.04) rotate(-1deg);
+            box-shadow: 0 0 32px #fff;
+        }
+
+        .social-embeds {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .social-embeds>div {
+            flex: 1 1 340px;
+            min-width: 260px;
+            max-width: 350px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 14px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 18px 0 #fff2;
+            border: 1px solid #fff2;
+        }
+
+        .social-embeds h3 {
+            color: var(--highlight);
+            font-family: 'Orbitron', Arial, sans-serif;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+            margin: 2rem 0 0 0;
+            padding: 1.5rem 0 0.5rem 0;
+            background: transparent;
+            letter-spacing: 1px;
+        }
+
+        /* Starfield */
+        .starfield {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.9;
+            animation: star-move linear infinite;
+        }
+
+        @keyframes star-move {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Planets/Emojis */
+        .planets {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .planet {
+            position: absolute;
+            font-size: 2.2rem;
+            opacity: 0.7;
+            animation: planet-move 12s linear infinite alternate;
+            filter: grayscale(1) brightness(2) contrast(2);
+        }
+
+        .planet1 {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .planet2 {
+            top: 80%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .planet3 {
+            top: 20%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        .planet4 {
+            top: 60%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .planet5 {
+            top: 40%;
+            left: 50%;
+            animation-delay: 8s;
+        }
+
+        @keyframes planet-move {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            100% {
+                transform: scale(1.2) rotate(360deg);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            background: transparent;
+            margin-bottom: 0;
+            padding-top: 2rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 #fff2;
+            border: 2px solid #fff;
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: visible;
+        }
+
+        .animated-text {
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--highlight);
+            text-shadow: 0 0 18px #fff, 0 0 2px #000;
+            margin-bottom: 0.5rem;
+            animation: glow 2s infinite alternate;
+            display: inline-block;
+        }
+
+        .animated-text span {
+            display: inline-block;
+            animation: bounce 1.2s infinite alternate;
+        }
+
+        .animated-text span:last-child {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .animated-sub {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+            letter-spacing: 1px;
+            animation: fadeInUp 2s;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, #ff0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 3D Shapes */
+        .hero-3d {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            min-height: 120px;
+        }
+
+        .cube {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(30deg) rotateY(30deg);
+            transition: transform 0.5s;
+        }
+
+        .cube .face {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fff 60%, #ff0 100%);
+            opacity: 0.95;
+            border: 2px solid #fff;
+            box-shadow: 0 0 18px #fff;
+        }
+
+        .cube .front {
+            transform: translateZ(30px);
+        }
+
+        .cube .back {
+            transform: rotateY(180deg) translateZ(30px);
+        }
+
+        .cube .right {
+            transform: rotateY(90deg) translateZ(30px);
+        }
+
+        .cube .left {
+            transform: rotateY(-90deg) translateZ(30px);
+        }
+
+        .cube .top {
+            transform: rotateX(90deg) translateZ(30px);
+        }
+
+        .cube .bottom {
+            transform: rotateX(-90deg) translateZ(30px);
+        }
+
+        .sphere {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff 60%, #ff0 100%);
+            box-shadow: 0 0 24px #fff, 0 0 8px #ff0;
+            opacity: 0.95;
+        }
+
+        .pyramid {
+            width: 0;
+            height: 0;
+            border-left: 32px solid transparent;
+            border-right: 32px solid transparent;
+            border-bottom: 60px solid #fff;
+            opacity: 0.95;
+            margin-top: 20px;
+            filter: drop-shadow(0 0 18px #fff);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            main {
+                max-width: 98vw;
+            }
+
+            .social-embeds {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .hero-3d {
+                gap: 1.2rem;
+            }
+
+            .cube,
+            .sphere {
+                width: 40px;
+                height: 40px;
+            }
+
+            .cube .face {
+                width: 40px;
+                height: 40px;
+            }
+
+            .pyramid {
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                border-bottom: 40px solid #fff;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 1.2rem 0.5rem;
+            }
+
+            .social-embeds>div {
+                min-width: 90vw;
+                max-width: 100vw;
+            }
+
+            .hero-content {
+                padding: 1.2rem 0.5rem;
+            }
+
+            .animated-text {
+                font-size: 1.3rem;
+            }
+
+            .hero-3d {
+                gap: 0.7rem;
+            }
+
+            .cube,
+            .sphere {
+                width: 28px;
+                height: 28px;
+            }
+
+            .cube .face {
+                width: 28px;
+                height: 28px;
+            }
+
+            .pyramid {
+                border-left: 12px solid transparent;
+                border-right: 12px solid transparent;
+                border-bottom: 24px solid #fff;
+            }
+
+            nav {
+                gap: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated Starfield Background -->
+    <div class="starfield"></div>
+    <div class="planets">
+        <span class="planet planet1">🪐</span>
+        <span class="planet planet2">🛸</span>
+        <span class="planet planet3">🌑</span>
+        <span class="planet planet4">🌟</span>
+        <span class="planet planet5">🛰️</span>
+    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animated-text"><span>ANKIT KUMAR</span> <span>PORTFOLIO</span></h1>
+            <p class="animated-sub">Welcome to my <span class="gradient-text">personal</span> creative universe! 🚀
+            </p>
+            <div class="cube" style="margin: 0 auto; display: block;">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+            <div class="hero-3d">
+
+                <div class="sphere"></div>
+
+                <div class="pyramid"></div>
+            </div>
+        </div>
+    </section>
+
+    <header>
+        <nav>
+            <a href="#videos">Videos</a>
+            <a href="#reels">Reels</a>
+            <a href="#vlogs">Vlogs</a>
+            <a href="#editing">Editing</a>
+            <a href="#pictures">Pictures</a>
+            <a href="#designing">Designing</a>
+            <a href="#social">Social Media</a>
+        </nav>
+    </header>
+    <main>
+        <section id="videos">
+            <h2>Videos</h2>
+            <div class="embed">
+                <iframe width="350" height="197" src="https://www.youtube.com/embed/SAMPLE_VIDEO_ID"
+                    title="YouTube video" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section id="reels">
+            <h2>Reels</h2>
+            <div class="embed">
+                <blockquote class="instagram-media"
+                    data-instgrm-permalink="https://www.instagram.com/reel/SAMPLE_REEL_ID/" data-instgrm-version="14">
+                </blockquote>
+            </div>
+        </section>
+        <section id="vlogs">
+            <h2>Vlogs</h2>
+            <div class="embed">
+                <iframe width="350" height="197" src="https://www.youtube.com/embed/videoseries?list=SAMPLE_PLAYLIST_ID"
+                    frameborder="0" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section id="editing">
+            <h2>Editing</h2>
+            <img src="https://via.placeholder.com/300x200?text=Edited+Photo+1" alt="Editing Sample 1">
+            <img src="https://via.placeholder.com/300x200?text=Edited+Photo+2" alt="Editing Sample 2">
+        </section>
+        <section id="pictures">
+            <h2>Pictures</h2>
+            <img src="https://via.placeholder.com/300x200?text=Picture+1" alt="Picture Sample 1">
+            <img src="https://via.placeholder.com/300x200?text=Picture+2" alt="Picture Sample 2">
+        </section>
+        <section id="designing">
+            <h2>Designing</h2>
+            <img src="https://via.placeholder.com/300x200?text=Design+1" alt="Design Sample 1">
+            <img src="https://via.placeholder.com/300x200?text=Design+2" alt="Design Sample 2">
+        </section>
+        <section id="social">
+            <h2>Social Media</h2>
+            <div class="social-embeds">
+                <div>
+                    <h3>Instagram</h3>
+                    <iframe src="https://www.instagram.com/your_instagram_username/embed" width="350" height="500"
+                        frameborder="0" scrolling="no"></iframe>
+                </div>
+                <div>
+                    <h3>Facebook</h3>
+                    <iframe
+                        src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/your_facebook_page&tabs=timeline&width=340&height=500"
+                        width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                        allowfullscreen="true"></iframe>
+                </div>
+                <div>
+                    <h3>Twitter</h3>
+                    <a class="twitter-timeline" data-width="340" data-height="500"
+                        href="https://twitter.com/your_twitter_username">Tweets by you</a>
+                </div>
+                <div>
+                    <h3>YouTube</h3>
+                    <iframe width="340" height="200"
+                        src="https://www.youtube.com/embed?listType=user_uploads&list=your_channel_username"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div style="font-size:1.1rem;line-height:2;">
+                <strong>Email:</strong> <a href="mailto:ak91351444@gmail.com" style="color:#ff0;">ak91351444@gmail.com</a><br>
+                <strong>Phone:</strong> <a href="tel:+911234567890" style="color:#ff0;">+91 12345 67890</a><br>
+                <strong>WhatsApp:</strong>
+                <a href="https://wa.me/911234567890" target="_blank" style="color:#25D366;font-weight:bold;text-decoration:none;">
+                    Chat on WhatsApp
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ANKIT727ANK. All rights reserved.</p>
+    </footer>
+    <script async src="//www.instagram.com/embed.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- Animated Text, Starfield, and 3D Shapes Script -->
+    <script>
+        // Animated text typing for both spans
+        document.querySelectorAll('.animated-text span').forEach((span, idx) => {
+            let i = 0,
+                txt = span.textContent,
+                speed = 60 + idx * 40;
+            span.textContent = '';
+            function typeWriter() {
+                if (i < txt.length) {
+                    span.textContent += txt.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+            setTimeout(typeWriter, idx * 600);
+        });
+        // Starfield animation
+        const starfield = document.querySelector('.starfield');
+        for (let i = 0; i < 100; i++) {
+            let star = document.createElement('div');
+            star.className = 'star';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = (2 + Math.random() * 4) + 's';
+            starfield.appendChild(star);
+        }
+        // 3D Cube rotation
+        setInterval(() => {
+            document.querySelector('.cube').style.transform =
+                `rotateX(${Date.now() / 20}deg) rotateY(${Date.now() / 30}deg)`;
+            document.querySelector('.sphere').style.transform =
+                `rotateZ(${Date.now() / 40}deg)`;
+            document.querySelector('.pyramid').style.transform =
+                `rotateY(${Date.now() / 25}deg)`;
+        }, 30);
+        // Fade-in sections on scroll
+        const sections = document.querySelectorAll('section');
+        function revealSections() {
+            const trigger = window.innerHeight * 0.92;
+            sections.forEach(sec => {
+                const rect = sec.getBoundingClientRect();
+                if (rect.top < trigger) sec.classList.add('visible');
+            });
+        }
+        window.addEventListener('scroll', revealSections);
+        window.addEventListener('load', revealSections);
+    </script>
+</body>
+
+</html>
